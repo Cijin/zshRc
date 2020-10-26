@@ -1,5 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Postgresql
+PATH=/usr/local/pgsql/bin:$PATH
+export PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/cijin/.oh-my-zsh"
@@ -8,7 +11,7 @@ export ZSH="/home/cijin/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="common"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -45,7 +48,7 @@ export ZSH="/home/cijin/.oh-my-zsh"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -97,31 +100,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-lazygit() {
-  git add *
-  git commit -m "$1"
-}
-
-lazypush() {
-  git add *
-  git commit -m "$1"
-  git push origin master
-}
-
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
-
-# .zshrc
-autoload -U promptinit; promptinit
-
-# change the color for both `prompt:success` and `prompt:error`
-zstyle ':prompt:pure:prompt:*' color cyan
-
-# turn on git stash status
-zstyle :prompt:pure:git:stash show yes
-
-prompt pure
 source /home/cijin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-plugins=(zsh-syntax-highlighting)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# setting chromium (did this as I ran into problems running the paypal test)
+export CHROME_BIN=/usr/bin/chromium-browser
+
+# alias for update and upgrade
+alias apt-up='sudo apt-get update && sudo apt-get upgrade'
