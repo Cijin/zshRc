@@ -4,6 +4,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=/usr/local/pgsql/bin:$PATH
 export PATH
 
+# Composer
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/cijin/.oh-my-zsh"
 
@@ -11,7 +14,7 @@ export ZSH="/home/cijin/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="cj-custom"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -48,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -76,7 +79,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
+source ~/.myShCommands/.makedir.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -109,7 +112,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # setting chromium (did this as I ran into problems running the paypal test)
-export CHROME_BIN=/usr/bin/chromium-browser
+#export CHROME_BIN=/usr/bin/chromium-browser
 
 # alias for update and upgrade
 alias apt-up='sudo apt-get update && sudo apt-get upgrade'
+alias resetAudio='pulseaudio -k && sudo alsa force-reload'
+alias vimrc='vim ~/.vimrc'
+alias zshrc='vim ~/.zshrc'
+
+# alias for clearing screen
+alias c='clear'
