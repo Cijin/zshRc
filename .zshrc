@@ -4,6 +4,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=/usr/local/pgsql/bin:$PATH
 export PATH
 
+# brew
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
 # Composer
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 
@@ -119,6 +122,36 @@ alias apt-up='sudo apt-get update && sudo apt-get upgrade'
 alias resetAudio='pulseaudio -k && sudo alsa force-reload'
 alias vimrc='vim ~/.vimrc'
 alias zshrc='vim ~/.zshrc'
+alias gitlog='git log --graph --pretty=format:"%h - %an, %ar : %s"'
 
 # alias for clearing screen
 alias c='clear'
+
+# ANDROID_HOME env variables (React Native)
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Deno
+export DENO_INSTALL="/home/cijin/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+
+# Kitty Terminal
+# prevent unknown terminal problem when ssh'ing
+alias ssh="kitty +kitten ssh"
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+fpath=($fpath "/home/cijin/.zfunctions")
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt spaceship
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
